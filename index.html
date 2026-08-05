@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>黄轲杰是混蛋</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: #000;
+    color: #fff;
+    font-family: "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    max-width: 800px;
+    padding: 40px 20px;
+  }
+
+  .university {
+    font-size: 24px;
+    color: #ccc;
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+  }
+
+  .title {
+    font-size: 60px;
+    font-weight: bold;
+    color: #ff0000;
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+    margin-bottom: 20px;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }
+    50% { text-shadow: 0 0 40px rgba(255, 0, 0, 0.8), 0 0 60px rgba(255, 0, 0, 0.4); }
+  }
+
+  .photo-container {
+    margin: 30px auto;
+    max-width: 400px;
+    border: 3px solid #ff0000;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+  }
+
+  .photo-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .question {
+    font-size: 28px;
+    color: #ffcc00;
+    margin: 30px 0 20px;
+  }
+
+  .counter-display {
+    font-size: 72px;
+    font-weight: bold;
+    color: #ff0000;
+    margin: 20px 0;
+    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+  }
+
+  .btn-hundan {
+    display: inline-block;
+    padding: 20px 60px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(180deg, #ff0000, #cc0000);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    letter-spacing: 4px;
+    transition: all 0.2s ease;
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.5);
+    user-select: none;
+  }
+
+  .btn-hundan:hover {
+    background: linear-gradient(180deg, #ff3333, #ee0000);
+    box-shadow: 0 8px 30px rgba(255, 0, 0, 0.7);
+    transform: translateY(-2px);
+  }
+
+  .btn-hundan:active {
+    transform: scale(0.95);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+  }
+
+  .time-info {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #666;
+    line-height: 2;
+  }
+
+  .time-info span {
+    color: #999;
+  }
+
+  .click-hint {
+    font-size: 16px;
+    color: #999;
+    margin-top: 10px;
+    animation: blink 1.5s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .footer {
+    margin-top: 50px;
+    font-size: 12px;
+    color: #444;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="university">浙江海洋大学</div>
+
+  <div class="title">黄轲杰是混蛋</div>
+
+  <div class="photo-container">
+    <img src="9025dd05d809cdb924ce413b1ab14a2f.jpg" alt="黄轲杰">
+  </div>
+
+  <div class="question">你觉得黄轲杰是混蛋吗？</div>
+
+  <div class="counter-display" id="counter">0</div>
+
+  <button class="btn-hundan" onclick="addOne()" id="btn">
+    是混蛋 +1
+  </button>
+
+  <div class="click-hint">↑ 点击按钮表达你的态度 ↑</div>
+
+  <div class="time-info">
+    <p>浙江海洋大学</p>
+    <p>本页面打开时间：<span id="openTime"></span></p>
+    <p>累计认定混蛋次数：<span id="totalCount">0</span> 次</p>
+  </div>
+
+  <div class="footer">
+    © 黄轲杰是混蛋.com — 此网站仅供娱乐
+  </div>
+
+</div>
+
+<script>
+  // 页面打开时间
+  var now = new Date();
+  var timeStr = now.getFullYear() + '年' +
+                (now.getMonth() + 1) + '月' +
+                now.getDate() + '日 ' +
+                now.getHours().toString().padStart(2, '0') + ':' +
+                now.getMinutes().toString().padStart(2, '0') + ':' +
+                now.getSeconds().toString().padStart(2, '0');
+  document.getElementById('openTime').textContent = timeStr;
+
+  // 从 localStorage 读取历史计数
+  var totalCount = localStorage.getItem('huangkejie_hundan_count');
+  if (totalCount === null) {
+    totalCount = 0;
+  } else {
+    totalCount = parseInt(totalCount);
+  }
+  document.getElementById('counter').textContent = totalCount;
+  document.getElementById('totalCount').textContent = totalCount;
+
+  function addOne() {
+    totalCount++;
+    document.getElementById('counter').textContent = totalCount;
+    document.getElementById('totalCount').textContent = totalCount;
+    localStorage.setItem('huangkejie_hundan_count', totalCount);
+
+    // 点击动画效果
+    var btn = document.getElementById('btn');
+    btn.textContent = '✓ 已投票!';
+    setTimeout(function() {
+      btn.textContent = '是混蛋 +1';
+    }, 300);
+
+    // 数字跳动效果
+    var counterEl = document.getElementById('counter');
+    counterEl.style.transform = 'scale(1.3)';
+    counterEl.style.transition = 'transform 0.15s ease';
+    setTimeout(function() {
+      counterEl.style.transform = 'scale(1)';
+    }, 150);
+  }
+</script>
+
+</body>
+</html>
